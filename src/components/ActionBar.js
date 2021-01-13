@@ -7,9 +7,9 @@ import firebase from "../utils/firebase"
 export default function ActionBar(props) {
 
 
-    console.log(props);
+    //console.log(props);
 
-    const {showList,setshowList} = props
+    const {showList,setShowList} = props
     
     return (
         <View style={styles.viewFooter}>
@@ -23,7 +23,7 @@ export default function ActionBar(props) {
             </View>
             <View style={styles.viewAdd} >
                 <Text style={styles.text} 
-                onPress={()=>setshowList(!showList)}
+                onPress={()=>setShowList(!showList)}
                 
                 >{showList ? "Nueva fecha" :"Cancelar fecha"}</Text>
                 {/*

@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react';
-import {StyleSheet,SafeAreaView,StatusBar} from "react-native"
+import {StyleSheet,SafeAreaView,StatusBar,LogBox} from "react-native"
 import {decode,encode} from "base-64"; 
 import Auth from './src/components/Auth'
 import firebase from './src/utils/firebase'
@@ -9,6 +9,7 @@ import ListBirthday from './src/components/ListBirthday'
 if(!global.btoa)  global.btoa = encode;
 if(!global.atob)  global.atob = decode;
 
+LogBox.ignoreAllLogs()
 
 
 export default function App(){
@@ -25,12 +26,14 @@ export default function App(){
 
   if(user ===undefined) return null;
 
+
+
 //remplazamos el compnente de Logut para salir de sesion
   return(
     <>
     <StatusBar barStyle="light-content"/>
     <SafeAreaView style={styles.backgorund}>
-      {user ? <ListBirthday/>:<Auth/>} 
+      {user ? <ListBirthday user={user}/>:<Auth/>} 
     </SafeAreaView>
     </>
     
